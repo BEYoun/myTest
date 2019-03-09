@@ -57,5 +57,32 @@ custom styles.
 
 
 e-commerce site not finished
-I apply the notion of admin / client login
+I apply the notion of admin / client login:
+
+![Capture](https://user-images.githubusercontent.com/43119330/54072017-d93c0000-426c-11e9-945e-7447c8cc1887.PNG)
+
+
+
+login :
+![image](https://user-images.githubusercontent.com/43119330/54072032-143e3380-426d-11e9-85e9-3fd8e1329ecb.png)
+
+
+
+two types of connection either client or admin
+
+client:
+    blog:
+    
+    ![image](https://user-images.githubusercontent.com/43119330/54072074-ae9e7700-426d-11e9-8088-60617c68bbac.png)
+    
+    
+        comments:
+        
+        ![image](https://user-images.githubusercontent.com/43119330/54072088-d8f03480-426d-11e9-9102-959cb724289b.png)
+        
+admin:
+    blog:
+    ![image](https://user-images.githubusercontent.com/43119330/54072102-fd4c1100-426d-11e9-899f-5516348a1c17.png)
+    
+    he can remove and add articles
 
