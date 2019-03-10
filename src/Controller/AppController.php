@@ -28,13 +28,6 @@ use Cake\Event\Event;
 class AppController extends Controller
 {
 
-    public $components = array(
-        'Flash',
-        'Auth' => array(
-            'loginRedirect' => array('controller' => 'posts', 'action' => 'index'),
-            'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'home')
-        )
-    );
     /**
      * Initialization hook method.
      *
@@ -53,27 +46,10 @@ class AppController extends Controller
         ]);
         $this->loadComponent('Flash');
 
-        $this->loadComponent('Auth', [
-            'loginAction' => [
-                'controller' => 'Users',
-                'action' => 'login',
-            ],
-            'authError' => 'Did you really think you are allowed to see that?',
-            'authenticate' => [
-                'Form' => [
-                    'fields' => ['username' => 'email']
-                ]
-            ],
-            'storage' => 'Session'
-        ]);
-        $this->Auth->allow(['index','display','add']);
-        
         /*
          * Enable the following component for recommended CakePHP security settings.
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
          */
         //$this->loadComponent('Security');
     }
-    
-
 }
