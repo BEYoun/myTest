@@ -30,732 +30,247 @@ endif;
 $cakeDescription = 'CakePHP: the rapid development PHP framework';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>aStar</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="aStar Fashion Template Project">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.3/bootstrap.css">
-    <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
-    <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
-    <link rel="stylesheet" type="text/css" href="styles/responsive.css">
+    <?= $this->Html->charset() ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <?= $cakeDescription ?>
+    </title>
+
+    <?= $this->Html->meta('icon') ?>
+    <?= $this->Html->css('base.css') ?>
+    <?= $this->Html->css('style.css') ?>
+    <?= $this->Html->css('home.css') ?>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:500i|Roboto:300,400,700|Roboto+Mono" rel="stylesheet">
 </head>
-<body>
+<body class="home">
 
-<div class="super_container">
-
-    <!-- Header -->
-
-    <header class="header">
-        <div class="header_content d-flex flex-row align-items-center justify-content-start">
-            
-            <!-- Hamburger -->
-            <div class="hamburger menu_mm"><i class="fa fa-bars menu_mm" aria-hidden="true"></i></div>
-
-            <!-- Logo -->
-            <div class="header_logo">
-            <!-- <a href="#"><div>a<span>star</span></div></a> -->
-            <?php
-            echo $this->Html->image("logo2.png", [
-                "alt" => "Fashion Shifter",
-                'url' => ['controller' => 'Pages', 'action' => 'index'],
-                "width" => "50"
-            ]);
-            ?>
-        </div>
-
-            <!-- Navigation -->
-            <nav class="header_nav">
-                <ul class="d-flex flex-row align-items-center justify-content-start">
-                    <li><a href="index.html">home</a></li>
-                    <?php 
-                            if($this->request->session()->read('Auth')==false){
-                        ?>
-                        <li><a href="<?=$this->request->base?>/users/login">login<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                        <?php
-                            }else{
-                        ?>
-                            <li><a href="<?=$this->request->base?>/users/logout">logout<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                        <?php
-                            }
-                        ?>
-                    <li><a href="#">WOMAN</a></li>
-                    <li><a href="#">lookbook</a></li>
-                    <li><?php $this->Html->link("BLOG", ['controller'=>'posts','action'=>'index']) ?></li>
-                    <li><a href="#">contact</a></li>
-                </ul>
-            </nav>
-
-            <!-- Header Extra -->
-            <div class="header_extra ml-auto d-flex flex-row align-items-center justify-content-start">
-
-                <!-- Language -->
-                <div class="info_languages has_children">
-                    <div class="language_flag"><img src="images/flag_1.svg" alt="https://www.flaticon.com/authors/freepik"></div>
-                    <div class="dropdown_text">english</div>
-                    <div class="dropdown_arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
-                    
-                    <!-- Language Dropdown Menu -->
-                     <ul>
-                        <li><a href="#">
-                            <div class="language_flag"><img src="images/flag_2.svg" alt="https://www.flaticon.com/authors/freepik"></div>
-                            <div class="dropdown_text">french</div>
-                        </a></li>
-                        <li><a href="#">
-                            <div class="language_flag"><img src="images/flag_3.svg" alt="https://www.flaticon.com/authors/freepik"></div>
-                            <div class="dropdown_text">japanese</div>
-                        </a></li>
-                        <li><a href="#">
-                            <div class="language_flag"><img src="images/flag_4.svg" alt="https://www.flaticon.com/authors/freepik"></div>
-                            <div class="dropdown_text">russian</div>
-                        </a></li>
-                        <li><a href="#">
-                            <div class="language_flag"><img src="images/flag_5.svg" alt="https://www.flaticon.com/authors/freepik"></div>
-                            <div class="dropdown_text">spanish</div>
-                        </a></li>
-                     </ul>
-
-                </div>
-
-                <!-- Currency -->
-                <div class="info_currencies has_children">
-                    <div class="dropdown_text">usd</div>
-                    <div class="dropdown_arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
-
-                    <!-- Currencies Dropdown Menu -->
-                     <ul>
-                        <li><a href="#"><div class="dropdown_text">EUR</div></a></li>
-                        <li><a href="#"><div class="dropdown_text">YEN</div></a></li>
-                        <li><a href="#"><div class="dropdown_text">GBP</div></a></li>
-                        <li><a href="#"><div class="dropdown_text">CAD</div></a></li>
-                     </ul>
-
-                </div>
-
-                
-
-                    <!-- Cart -->
-                <!-- 
-                <div class="cart d-flex flex-row align-items-center justify-content-start">
-                    <div class="cart_icon"><a href="cart.html">
-                        <img src="images/bag.png" alt="">
-                        <div class="cart_num">2</div>
-                    </a></div>
-                </div> -->
-
-            </div>
-
-        </div>
-    </header>
-
-    <!-- Menu -->
-
-    <div class="menu d-flex flex-column align-items-start justify-content-start menu_mm trans_400">
-        <div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
-        <div class="menu_top d-flex flex-row align-items-center justify-content-start">
-
-            <!-- Language -->
-            <div class="info_languages has_children">
-                <div class="language_flag"><img src="images/flag_1.svg" alt="https://www.flaticon.com/authors/freepik"></div>
-                <div class="dropdown_text">english</div>
-                <div class="dropdown_arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
-                
-                <!-- Language Dropdown Menu -->
-                 <ul>
-                    <li><a href="#">
-                        <div class="language_flag"><img src="images/flag_2.svg" alt="https://www.flaticon.com/authors/freepik"></div>
-                        <div class="dropdown_text">french</div>
-                    </a></li>
-                    <li><a href="#">
-                        <div class="language_flag"><img src="images/flag_3.svg" alt="https://www.flaticon.com/authors/freepik"></div>
-                        <div class="dropdown_text">japanese</div>
-                    </a></li>
-                    <li><a href="#">
-                        <div class="language_flag"><img src="images/flag_4.svg" alt="https://www.flaticon.com/authors/freepik"></div>
-                        <div class="dropdown_text">russian</div>
-                    </a></li>
-                    <li><a href="#">
-                        <div class="language_flag"><img src="images/flag_5.svg" alt="https://www.flaticon.com/authors/freepik"></div>
-                        <div class="dropdown_text">spanish</div>
-                    </a></li>
-                 </ul>
-
-            </div>
-
-            <!-- Currency -->
-            <div class="info_currencies has_children">
-                <div class="dropdown_text">usd</div>
-                <div class="dropdown_arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
-
-                <!-- Currencies Dropdown Menu -->
-                 <ul>
-                    <li><a href="#"><div class="dropdown_text">EUR</div></a></li>
-                    <li><a href="#"><div class="dropdown_text">YEN</div></a></li>
-                    <li><a href="#"><div class="dropdown_text">GBP</div></a></li>
-                    <li><a href="#"><div class="dropdown_text">CAD</div></a></li>
-                 </ul>
-
-            </div>
-
-        </div>
-        <div class="menu_search">
-            <form action="#" class="header_search_form menu_mm">
-                <input type="search" class="search_input menu_mm" placeholder="Search" required="required">
-                <button class="header_search_button d-flex flex-column align-items-center justify-content-center menu_mm">
-                    <i class="fa fa-search menu_mm" aria-hidden="true"></i>
-                </button>
-            </form>
-        </div>
-        <nav class="menu_nav">
-            <ul class="menu_mm">
-                <li class="menu_mm"><a href="index.html">home</a></li>
-                <?php 
-                            if($this->request->session()->read('Auth')==false){
-                        ?>
-                        <li><a href="<?=$this->request->base?>/users/login">login<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                        <?php
-                            }else{
-                        ?>
-                            <li><a href="<?=$this->request->base?>/users/logout">logout<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                        <?php
-                            }
-                        ?>
-                <li class="menu_mm"><a href="#">woman</a></li>
-                <li class="menu_mm"><a href="<?= $this->request->base?>/posts/">blog</a></li>
-                <li class="menu_mm"><a href="contact.html">contact</a></li>
-            </ul>
-        </nav>
-        <div class="menu_extra">
-            <div class="menu_social">
-                <ul>
-                    <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                </ul>
-            </div>
-        </div>
+<header class="row">
+    <div class="header-image"><?= $this->Html->image('cake.logo.svg') ?></div>
+    <div class="header-title">
+        <h1>Welcome to CakePHP <?= Configure::version() ?> Red Velvet. Build fast. Grow solid.</h1>
     </div>
-    
-    <!-- Sidebar -->
+</header>
 
-    <div class="sidebar">
-        
-        <!-- Info -->
-        <div class="info">
-            <div class="info_content d-flex flex-row align-items-center justify-content-start">
-                
-                <!-- Language -->
-                <div class="info_languages has_children">
-                    <div class="language_flag"><img src="images/flag_1.svg" alt="https://www.flaticon.com/authors/freepik"></div>
-                    <div class="dropdown_text">english</div>
-                    <div class="dropdown_arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
-                    
-                    <!-- Language Dropdown Menu -->
-                     <ul>
-                        <li><a href="#">
-                            <div class="language_flag"><img src="images/flag_2.svg" alt="https://www.flaticon.com/authors/freepik"></div>
-                            <div class="dropdown_text">french</div>
-                        </a></li>
-                        <li><a href="#">
-                            <div class="language_flag"><img src="images/flag_3.svg" alt="https://www.flaticon.com/authors/freepik"></div>
-                            <div class="dropdown_text">japanese</div>
-                        </a></li>
-                        <li><a href="#">
-                            <div class="language_flag"><img src="images/flag_4.svg" alt="https://www.flaticon.com/authors/freepik"></div>
-                            <div class="dropdown_text">russian</div>
-                        </a></li>
-                        <li><a href="#">
-                            <div class="language_flag"><img src="images/flag_5.svg" alt="https://www.flaticon.com/authors/freepik"></div>
-                            <div class="dropdown_text">spanish</div>
-                        </a></li>
-                     </ul>
-
-                </div>
-
-                <!-- Currency -->
-                <div class="info_currencies has_children">
-                    <div class="dropdown_text">usd</div>
-                    <div class="dropdown_arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
-
-                    <!-- Currencies Dropdown Menu -->
-                     <ul>
-                        <li><a href="#"><div class="dropdown_text">EUR</div></a></li>
-                        <li><a href="#"><div class="dropdown_text">YEN</div></a></li>
-                        <li><a href="#"><div class="dropdown_text">GBP</div></a></li>
-                        <li><a href="#"><div class="dropdown_text">CAD</div></a></li>
-                     </ul>
-
-                </div>
-
-            </div>
+<div class="row">
+    <div class="columns large-12">
+        <div class="ctp-warning alert text-center">
+            <p>Please be aware that this page will not be shown if you turn off debug mode unless you replace src/Template/Pages/home.ctp with your own version.</p>
         </div>
-
-        <!-- Logo -->
-        <div class="sidebar_logo">
-            <!-- <a href="#"><div>a<span>star</span></div></a> -->
-            <?php
-            echo $this->Html->image("logo2.png", [
-                "alt" => "Fashion Shifter",
-                'url' => ['controller' => 'Pages', 'action' => 'index'],
-                "width" => "220"
-            ]);
-            ?>
-        </div>
-
-        <!-- Sidebar Navigation -->
-        <nav class="sidebar_nav">
+        <div id="url-rewriting-warning" class="alert url-rewriting">
             <ul>
-                <li><a href="<?=$this->request->base?>">home<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                <?php 
-                            if($this->request->session()->read('Auth')==false){
-                        ?>
-                        <li><a href="<?=$this->request->base?>/users/login">login<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                        <?php
-                            }else{
-                        ?>
-                            <li><a href="<?=$this->request->base?>/users/logout">logout<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                        <?php
-                            }
-                        ?>
-                <li><a href="#">woman<i class="fa fa-angle-right" aria-hidden="true"></i></a></li><!-- 
-                <li><a href="#">lookbook<i class="fa fa-angle-right" aria-hidden="true"></i></a></li> -->
-                <li><a href="<?= $this->request->base?>/posts/">blog<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                <li><a href="#">contact<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                <li class="bullet problem">
+                    URL rewriting is not properly configured on your server.<br />
+                    1) <a target="_blank" href="https://book.cakephp.org/3.0/en/installation.html#url-rewriting">Help me configure it</a><br />
+                    2) <a target="_blank" href="https://book.cakephp.org/3.0/en/development/configuration.html#general-configuration">I don't / can't use URL rewriting</a>
+                </li>
             </ul>
-        </nav>
-
-        <!-- Search -->
-        <div class="search">
-            <form action="#" class="search_form" id="sidebar_search_form">
-                <input type="text" class="search_input" placeholder="Search" required="required">
-                <button class="search_button"><i class="fa fa-search" aria-hidden="true"></i></button>
-            </form>
         </div>
-
-        <!-- Cart -->
-        <?php 
-            if($this->request->session()->read('Auth')==true){
-        ?>
-        <div class="cart d-flex flex-row align-items-center justify-content-start">
-            <div class="cart_icon"><a href="<?= $this->request->base ?>/clients/bag">
-                <img src="<?= $this->request->base ?>/images/bag.png" alt="">
-                <div class="cart_num">0</div>
-            </a></div>
-            <div class="cart_text">bag</div>
-            <div class="cart_price">$0 (0)</div>
-        </div>
-        <?php
-            }
-        ?>
+        <?php Debugger::checkSecurityKeys(); ?>
     </div>
-
-    <!-- Home -->
-
-    <div class="home">
-        
-        <!-- Home Slider -->
-        <div class="home_slider_container">
-            <div class="owl-carousel owl-theme home_slider">
-                
-                <!-- Slide -->
-                <div class="owl-item">
-                    <div class="background_image" style="background-image:url(<?= $this->request->base ?>/images/home_slider_1.jpg)"></div>
-                    <div class="home_content_container">
-                        <div class="home_content">
-                            <div class="home_discount d-flex flex-row align-items-end justify-content-start">
-                                <div class="home_discount_num">20</div>
-                                <div class="home_discount_text">Discount on the</div>
-                            </div>
-                            <div class="home_title">New Collection</div>
-                            <div class="button button_1 home_button trans_200"><a href="categories.html">Shop NOW!</a></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide -->
-                <div class="owl-item">
-                    <div class="background_image" style="background-image:url(images/home_slider_1.jpg)"></div>
-                    <div class="home_content_container">
-                        <div class="home_content">
-                            <div class="home_discount d-flex flex-row align-items-end justify-content-start">
-                                <div class="home_discount_num">20</div>
-                                <div class="home_discount_text">Discount on the</div>
-                            </div>
-                            <div class="home_title">New Collection</div>
-                            <div class="button button_1 home_button trans_200"><a href="categories.html">Shop NOW!</a></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide -->
-                <div class="owl-item">
-                    <div class="background_image" style="background-image:url(images/home_slider_1.jpg)"></div>
-                    <div class="home_content_container">
-                        <div class="home_content">
-                            <div class="home_discount d-flex flex-row align-items-end justify-content-start">
-                                <div class="home_discount_num">20</div>
-                                <div class="home_discount_text">Discount on the</div>
-                            </div>
-                            <div class="home_title">New Collection</div>
-                            <div class="button button_1 home_button trans_200"><a href="categories.html">Shop NOW!</a></div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-                
-            <!-- Home Slider Navigation -->
-            <div class="home_slider_nav home_slider_prev trans_200"><div class=" d-flex flex-column align-items-center justify-content-center"><img src="images/prev.png" alt=""></div></div>
-            <div class="home_slider_nav home_slider_next trans_200"><div class=" d-flex flex-column align-items-center justify-content-center"><img src="images/next.png" alt=""></div></div>
-
-        </div>
-    </div>
-
-    <!-- Boxes -->
-    
-    <div class="boxes">
-        <div class="section_container">
-            <div class="container">
-                <div class="row">
-                    
-                    <!-- Box -->
-                    <div class="col-lg-4 box_col">
-                        <div class="box">
-                            <div class="box_image"><img src="<?= $this->request->base ?>/images/box_1.jpg" alt=""></div>
-                            <div class="box_title trans_200"><a href="categories.html">summer collection</a></div>
-                        </div>
-                    </div>
-
-                    <!-- Box -->
-                    <div class="col-lg-4 box_col">
-                        <div class="box">
-                            <div class="box_image"><img src="<?= $this->request->base ?>/images/box_2.jpg" alt=""></div>
-                            <div class="box_title trans_200"><a href="categories.html">eyewear collection</a></div>
-                        </div>
-                    </div>
-
-                    <!-- Box -->
-                    <div class="col-lg-4 box_col">
-                        <div class="box">
-                            <div class="box_image"><img src="<?= $this->request->base ?>/images/box_3.jpg" alt=""></div>
-                            <div class="box_title trans_200"><a href="categories.html">basic pieces</a></div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Categories -->
-
-    <div class="categories">
-        <div class="section_container">
-            <div class="container">
-                <div class="row">
-                    <div class="col text-center">
-                        <div class="categories_list_container">
-                            <ul class="categories_list d-flex flex-row align-items-center justify-content-start">
-                                <li><a href="categories.html">new arrivals</a></li>
-                                <li><a href="categories.html">recommended</a></li>
-                                <li><a href="categories.html">best sellers</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Products -->
-
-    <div class="products">
-        <div class="section_container">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="products_container grid">
-                            
-                            <!-- Product -->
-                            <!-- <div class="product grid-item hot">
-                                <div class="product_inner">
-                                    <div class="product_image">
-                                        <img src="images/product_1.jpg" alt="">
-                                        <div class="product_tag">hot</div>
-                                    </div>
-                                    <div class="product_content text-center">
-                                        <div class="product_title"><a href="product.html">long red shirt</a></div>
-                                        <div class="product_price">$39.90</div>
-                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
-                                    </div>
-                                </div>  
-                            </div> -->
-
-                            <!-- Product -->
-                            <!-- <div class="product grid-item">
-                                <div class="product_inner">
-                                    <div class="product_image"><img src="images/product_2.jpg" alt=""></div>
-                                    <div class="product_content text-center">
-                                        <div class="product_title"><a href="product.html">hype grey shirt</a></div>
-                                        <div class="product_price">$19.50</div>
-                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
-                                    </div>
-                                </div>  
-                            </div> -->
-
-                            <!-- Product -->
-                            <!-- <div class="product grid-item sale">
-                                <div class="product_inner">
-                                    <div class="product_image">
-                                        <img src="images/product_3.jpg" alt="">
-                                        <div class="product_tag">sale</div>
-                                    </div>
-                                    <div class="product_content text-center">
-                                        <div class="product_title"><a href="product.html">long sleeve jacket</a></div>
-                                        <div class="product_price">$32.20<span>RRP 64.40</span></div>
-                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
-                                    </div>
-                                </div>  
-                            </div> -->
-
-                            <!-- Product -->
-                            <!-- <div class="product grid-item">
-                                <div class="product_inner">
-                                    <div class="product_image">
-                                        <img src="images/product_4.jpg" alt="">
-                                    </div>
-                                    <div class="product_content text-center">
-                                        <div class="product_title"><a href="product.html">denim men shirt</a></div>
-                                        <div class="product_price">$59.90</div>
-                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
-                                    </div>
-                                </div>  
-                            </div> -->
-
-                            <!-- Product -->
-                            <!-- <div class="product grid-item">
-                                <div class="product_inner">
-                                    <div class="product_image">
-                                        <img src="images/product_5.jpg" alt="">
-                                    </div>
-                                    <div class="product_content text-center">
-                                        <div class="product_title"><a href="product.html">long red shirt</a></div>
-                                        <div class="product_price">$79.90</div>
-                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
-                                    </div>
-                                </div>  
-                            </div>
- -->
-                            <!-- Product -->
-                            <!-- <div class="product grid-item new">
-                                <div class="product_inner">
-                                    <div class="product_image">
-                                        <img src="images/product_6.jpg" alt="">
-                                        <div class="product_tag">new</div>
-                                    </div>
-                                    <div class="product_content text-center">
-                                        <div class="product_title"><a href="product.html">hype grey shirt</a></div>
-                                        <div class="product_price">$59.90</div>
-                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
-                                    </div>
-                                </div>  
-                            </div> -->
-
-                            <!-- Product -->
-                            <!-- <div class="product grid-item">
-                                <div class="product_inner">
-                                    <div class="product_image">
-                                        <img src="images/product_7.jpg" alt="">
-                                    </div>
-                                    <div class="product_content text-center">
-                                        <div class="product_title"><a href="product.html">long sleeve jacket</a></div>
-                                        <div class="product_price">$15.90</div>
-                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
-                                    </div>
-                                </div>  
-                            </div> -->
-
-                            <!-- Product -->
-                            <!-- <div class="product grid-item sale">
-                                <div class="product_inner">
-                                    <div class="product_image">
-                                        <img src="images/product_8.jpg" alt="">
-                                        <div class="product_tag">sale</div>
-                                    </div>
-                                    <div class="product_content text-center">
-                                        <div class="product_title"><a href="product.html">denim men shirt</a></div>
-                                        <div class="product_price">$43.99<span>RRP 64.40</span></div>
-                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
-                                    </div>
-                                </div>  
-                            </div> -->
-                            <?php
-                                foreach ($mesPieces as $key => $value) {
-                            ?>
-                                <div class="product grid-item">
-                                    <div class="product_inner">
-                                        <div class="product_image">
-                                            <img src="<?= $this->request->base?>/<?= $value['picture']?>" alt="">
-                                        </div>
-                                        <div class="product_content text-center">
-                                            <div class="product_title"><a href="<?= $this->request->base?>/pieces/view/<?= $value['id']?>"><?= $value['nom']?></a></div>
-                                            <div class="product_price">$<?= $value['price']?></div>
-                                            <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
-                                        </div>
-                                    </div>  
-                                </div>  
-                            <?php
-                                }
-                            ?>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Newsletter -->
-
-    <div class="newsletter">
-        <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/newsletter.jpg" data-speed="0.8"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    <div class="newsletter_content text-center">
-                        <div class="newsletter_title_container">
-                            <div class="newsletter_title">subscribe to our newsletter</div>
-                            <div class="newsletter_subtitle">we won't spam, we promise!</div>
-                        </div>
-                        <div class="newsletter_form_container">
-                            <form action="#" id="newsletter_form" class="newsletter_form">
-                                <input type="email" class="newsletter_input" placeholder="your e-mail here" required="required">
-                                <button class="newsletter_button">submit</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-
-    <footer class="footer">
-        <div class="footer_content">
-            <div class="section_container">
-                <div class="container">
-                    <div class="row">
-                        <p>
-                            Made by : <br>
-                            <em><b>BEAILA Younes</b></em><br>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Social -->
-        <div class="footer_social">
-            <div class="section_container">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="footer_social_container d-flex flex-row align-items-center justify-content-between">
-                                <!-- Instagram -->
-                                <a href="#">
-                                    <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
-                                        <div class="footer_social_icon"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-                                        <div class="footer_social_title">instagram</div>
-                                    </div>
-                                </a>
-                                <!-- Google + -->
-                                <a href="#">
-                                    <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
-                                        <div class="footer_social_icon"><i class="fa fa-google-plus" aria-hidden="true"></i></div>
-                                        <div class="footer_social_title">google +</div>
-                                    </div>
-                                </a>
-                                <!-- Pinterest -->
-                                <a href="#">
-                                    <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
-                                        <div class="footer_social_icon"><i class="fa fa-pinterest" aria-hidden="true"></i></div>
-                                        <div class="footer_social_title">pinterest</div>
-                                    </div>
-                                </a>
-                                <!-- Facebook -->
-                                <a href="#">
-                                    <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
-                                        <div class="footer_social_icon"><i class="fa fa-facebook" aria-hidden="true"></i></div>
-                                        <div class="footer_social_title">facebook</div>
-                                    </div>
-                                </a>
-                                <!-- Twitter -->
-                                <a href="#">
-                                    <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
-                                        <div class="footer_social_icon"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-                                        <div class="footer_social_title">twitter</div>
-                                    </div>
-                                </a>
-                                <!-- YouTube -->
-                                <a href="#">
-                                    <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
-                                        <div class="footer_social_icon"><i class="fa fa-youtube" aria-hidden="true"></i></div>
-                                        <div class="footer_social_title">youtube</div>
-                                    </div>
-                                </a>
-                                <!-- Tumblr -->
-                                <a href="#">
-                                    <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
-                                        <div class="footer_social_icon"><i class="fa fa-tumblr-square" aria-hidden="true"></i></div>
-                                        <div class="footer_social_title">tumblr</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>              
-        </div>
-
-        <!-- Credits -->
-        <div class="credits">
-            <div class="section_container">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="credits_content d-flex flex-row align-items-center justify-content-end">
-                                <div class="credits_text"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
 </div>
 
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="styles/bootstrap-4.1.3/popper.js"></script>
-<script src="styles/bootstrap-4.1.3/bootstrap.min.js"></script>
-<script src="plugins/greensock/TweenMax.min.js"></script>
-<script src="plugins/greensock/TimelineMax.min.js"></script>
-<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
-<script src="plugins/greensock/animation.gsap.min.js"></script>
-<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
-<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="plugins/easing/easing.js"></script>
-<script src="plugins/parallax-js-master/parallax.min.js"></script>
-<script src="plugins/Isotope/isotope.pkgd.min.js"></script>
-<script src="plugins/Isotope/fitcolumns.js"></script>
-<script src="js/custom.js"></script>
+<div class="row">
+    <div class="columns large-6">
+        <h4>Environment</h4>
+        <ul>
+        <?php if (version_compare(PHP_VERSION, '5.6.0', '>=')) : ?>
+            <li class="bullet success">Your version of PHP is 5.6.0 or higher (detected <?= PHP_VERSION ?>).</li>
+        <?php else : ?>
+            <li class="bullet problem">Your version of PHP is too low. You need PHP 5.6.0 or higher to use CakePHP (detected <?= PHP_VERSION ?>).</li>
+        <?php endif; ?>
+
+        <?php if (extension_loaded('mbstring')) : ?>
+            <li class="bullet success">Your version of PHP has the mbstring extension loaded.</li>
+        <?php else : ?>
+            <li class="bullet problem">Your version of PHP does NOT have the mbstring extension loaded.</li>
+        <?php endif; ?>
+
+        <?php if (extension_loaded('openssl')) : ?>
+            <li class="bullet success">Your version of PHP has the openssl extension loaded.</li>
+        <?php elseif (extension_loaded('mcrypt')) : ?>
+            <li class="bullet success">Your version of PHP has the mcrypt extension loaded.</li>
+        <?php else : ?>
+            <li class="bullet problem">Your version of PHP does NOT have the openssl or mcrypt extension loaded.</li>
+        <?php endif; ?>
+
+        <?php if (extension_loaded('intl')) : ?>
+            <li class="bullet success">Your version of PHP has the intl extension loaded.</li>
+        <?php else : ?>
+            <li class="bullet problem">Your version of PHP does NOT have the intl extension loaded.</li>
+        <?php endif; ?>
+        </ul>
+    </div>
+    <div class="columns large-6">
+        <h4>Filesystem</h4>
+        <ul>
+        <?php if (is_writable(TMP)) : ?>
+            <li class="bullet success">Your tmp directory is writable.</li>
+        <?php else : ?>
+            <li class="bullet problem">Your tmp directory is NOT writable.</li>
+        <?php endif; ?>
+
+        <?php if (is_writable(LOGS)) : ?>
+            <li class="bullet success">Your logs directory is writable.</li>
+        <?php else : ?>
+            <li class="bullet problem">Your logs directory is NOT writable.</li>
+        <?php endif; ?>
+
+        <?php $settings = Cache::getConfig('_cake_core_'); ?>
+        <?php if (!empty($settings)) : ?>
+            <li class="bullet success">The <em><?= $settings['className'] ?>Engine</em> is being used for core caching. To change the config edit config/app.php</li>
+        <?php else : ?>
+            <li class="bullet problem">Your cache is NOT working. Please check the settings in config/app.php</li>
+        <?php endif; ?>
+        </ul>
+    </div>
+    <hr />
+</div>
+
+<div class="row">
+    <div class="columns large-6">
+        <h4>Database</h4>
+        <?php
+        try {
+            $connection = ConnectionManager::get('default');
+            $connected = $connection->connect();
+        } catch (Exception $connectionError) {
+            $connected = false;
+            $errorMsg = $connectionError->getMessage();
+            if (method_exists($connectionError, 'getAttributes')) :
+                $attributes = $connectionError->getAttributes();
+                if (isset($errorMsg['message'])) :
+                    $errorMsg .= '<br />' . $attributes['message'];
+                endif;
+            endif;
+        }
+        ?>
+        <ul>
+        <?php if ($connected) : ?>
+            <li class="bullet success">CakePHP is able to connect to the database.</li>
+        <?php else : ?>
+            <li class="bullet problem">CakePHP is NOT able to connect to the database.<br /><?= $errorMsg ?></li>
+        <?php endif; ?>
+        </ul>
+    </div>
+    <div class="columns large-6">
+        <h4>DebugKit</h4>
+        <ul>
+        <?php if (Plugin::isLoaded('DebugKit')) : ?>
+            <li class="bullet success">DebugKit is loaded.</li>
+        <?php else : ?>
+            <li class="bullet problem">DebugKit is NOT loaded. You need to either install pdo_sqlite, or define the "debug_kit" connection name.</li>
+        <?php endif; ?>
+        </ul>
+    </div>
+    <hr />
+</div>
+
+<div class="row">
+    <div class="columns large-6">
+        <h3>Editing this Page</h3>
+        <ul>
+            <li class="bullet cutlery">To change the content of this page, edit: src/Template/Pages/home.ctp.</li>
+            <li class="bullet cutlery">You can also add some CSS styles for your pages at: webroot/css/.</li>
+        </ul>
+    </div>
+    <div class="columns large-6">
+        <h3>Getting Started</h3>
+        <ul>
+            <li class="bullet book"><a target="_blank" href="https://book.cakephp.org/3.0/en/">CakePHP 3.0 Docs</a></li>
+            <li class="bullet book"><a target="_blank" href="https://book.cakephp.org/3.0/en/tutorials-and-examples/cms/installation.html">The 20 min CMS Tutorial</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="columns large-12 text-center">
+        <h3 class="more">More about Cake</h3>
+        <p>
+            CakePHP is a rapid development framework for PHP which uses commonly known design patterns like Front Controller and MVC.<br />
+            Our primary goal is to provide a structured framework that enables PHP users at all levels to rapidly develop robust web applications, without any loss to flexibility.
+        </p>
+    </div>
+    <hr/>
+</div>
+
+<div class="row">
+    <div class="columns large-4">
+        <i class="icon support">P</i>
+        <h3>Help and Bug Reports</h3>
+        <ul>
+            <li class="bullet cutlery">
+                <a href="irc://irc.freenode.net/cakephp">irc.freenode.net #cakephp</a>
+                <ul><li>Live chat about CakePHP</li></ul>
+            </li>
+            <li class="bullet cutlery">
+                <a href="http://cakesf.herokuapp.com/">Slack</a>
+                <ul><li>CakePHP Slack support</li></ul>
+            </li>
+            <li class="bullet cutlery">
+                <a href="https://github.com/cakephp/cakephp/issues">CakePHP Issues</a>
+                <ul><li>CakePHP issues and pull requests</li></ul>
+            </li>
+            <li class="bullet cutlery">
+                <a href="http://discourse.cakephp.org/">CakePHP Forum</a>
+                <ul><li>CakePHP official discussion forum</li></ul>
+            </li>
+        </ul>
+    </div>
+    <div class="columns large-4">
+        <i class="icon docs">r</i>
+        <h3>Docs and Downloads</h3>
+        <ul>
+            <li class="bullet cutlery">
+                <a href="https://api.cakephp.org/3.0/">CakePHP API</a>
+                <ul><li>Quick Reference</li></ul>
+            </li>
+            <li class="bullet cutlery">
+                <a href="https://book.cakephp.org/3.0/en/">CakePHP Documentation</a>
+                <ul><li>Your Rapid Development Cookbook</li></ul>
+            </li>
+            <li class="bullet cutlery">
+                <a href="https://bakery.cakephp.org">The Bakery</a>
+                <ul><li>Everything CakePHP</li></ul>
+            </li>
+            <li class="bullet cutlery">
+                <a href="https://plugins.cakephp.org">CakePHP plugins repo</a>
+                <ul><li>A comprehensive list of all CakePHP plugins created by the community</li></ul>
+            </li>
+            <li class="bullet cutlery">
+                <a href="https://github.com/cakephp/">CakePHP Code</a>
+                <ul><li>For the Development of CakePHP Git repository, Downloads</li></ul>
+            </li>
+            <li class="bullet cutlery">
+                <a href="https://github.com/FriendsOfCake/awesome-cakephp">CakePHP Awesome List</a>
+                <ul><li>A curated list of amazingly awesome CakePHP plugins, resources and shiny things.</li></ul>
+            </li>
+            <li class="bullet cutlery">
+                <a href="https://www.cakephp.org">CakePHP</a>
+                <ul><li>The Rapid Development Framework</li></ul>
+            </li>
+        </ul>
+    </div>
+    <div class="columns large-4">
+        <i class="icon training">s</i>
+        <h3>Training and Certification</h3>
+        <ul>
+            <li class="bullet cutlery">
+                <a href="https://cakefoundation.org/">Cake Software Foundation</a>
+                <ul><li>Promoting development related to CakePHP</li></ul>
+            </li>
+            <li class="bullet cutlery">
+                <a href="https://training.cakephp.org/">CakePHP Training</a>
+                <ul><li>Learn to use the CakePHP framework</li></ul>
+            </li>
+            <li class="bullet cutlery">
+                <a href="https://certification.cakephp.org/">CakePHP Certification</a>
+                <ul><li>Become a certified CakePHP developer</li></ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
 </body>
 </html>

@@ -21,15 +21,17 @@ use Cake\View\Exception\MissingTemplateException;
 
 /**
  * Static content controller
+ *
  * This controller will render views from Template/Pages/
+ *
  * @link https://book.cakephp.org/3.0/en/controllers/pages-controller.html
  */
 class PagesController extends AppController
 {
 
-
     /**
      * Displays a view
+     *
      * @param array ...$path Path segments.
      * @return \Cake\Http\Response|null
      * @throws \Cake\Http\Exception\ForbiddenException When a directory traversal attempt.
@@ -39,10 +41,6 @@ class PagesController extends AppController
     public function display(...$path)
     {
         $count = count($path);
-        $this->loadModel('Pieces');
-        $mesPieces = $this->Pieces->find('all');
-        //debug($mesPieces);
-        //die();
         if (!$count) {
             return $this->redirect('/');
         }
@@ -57,7 +55,7 @@ class PagesController extends AppController
         if (!empty($path[1])) {
             $subpage = $path[1];
         }
-        $this->set(compact('page', 'subpage','mesPieces'));
+        $this->set(compact('page', 'subpage'));
 
         try {
             $this->render(implode('/', $path));
